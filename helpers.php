@@ -8,7 +8,7 @@ if (!function_exists('config')) {
      */
     function config($key, $default = null)
     {
-        $data = require_once "config.php";
+        $data = require "config.php";
 
         $keys = explode('.', $key);
 

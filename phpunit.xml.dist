@@ -10,5 +10,9 @@
         <env name="NAPAS_BILLING_API_URL" value=""/>
         <env name="NAPAS_BILLING_USER_ID" value=""/>
         <env name="NAPAS_BILLING_USER_PASSWORD" value=""/>
+        <env name="NAPAS_BILLING_PUBLIC_KEY" value=""/>
+        <env name="NAPAS_BILLING_9PAY_PRIVATE_KEY" value=""/>
+        <env name="NAPAS_BILLING_9PAY_PUBLIC_KEY" value=""/>
+        <env name="NAPAS_BILLING_9PAY_PASSWORD" value=""/>
     </php>
 </phpunit>
