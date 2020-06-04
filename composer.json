@@ -1,0 +1,40 @@
+{
+  "name": "onesite/napas-billing",
+  "description": "Napas Billing",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "1Site.vn",
+      "email": "hotro@1site.vn",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "guzzlehttp/guzzle": "^6.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "OneSite\\Napas\\Billing\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "files": [
+      "helpers.php"
+    ],
+    "psr-4": {
+      "OneSite\\Napas\\Billing\\": [
+        "src",
+        "tests"
+      ]
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x.x-dev"
+    }
+  }
+}

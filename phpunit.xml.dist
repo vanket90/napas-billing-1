@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true">
+    <testsuites>
+        <testsuite name="Application Test Suite">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <includePath>.</includePath>
+        <env name="NAPAS_BILLING_API_URL" value=""/>
+        <env name="NAPAS_BILLING_USER_ID" value=""/>
+        <env name="NAPAS_BILLING_USER_PASSWORD" value=""/>
+    </php>
+</phpunit>
