@@ -150,6 +150,35 @@ class RSA
     }
 
     /**
+     * @param $data
+     * @return string
+     */
+    private function _sign($data)
+    {
+        $privateKey = file_get_contents('/Sources/Packages/napas-billing/storage/credentials/1591263414_private.key');
+
+        $privateKeyId = openssl_pkey_get_private($privateKey);
+
+        openssl_sign($data, $binarySignature, $privateKeyId, OPENSSL_ALGO_SHA1);
+
+        return base64_encode($binarySignature);
+    }
+
+    /**
+     * @param $sign
+     * @param $data
+     * @return bool
+     */
+    private function _verify($sign, $data)
+    {
+        $publicKey = file_get_contents('/Sources/Packages/napas-billing/storage/credentials/1591263414_public.pem');
+
+        $publicKeyId = openssl_pkey_get_public($publicKey);
+
+        return (bool)openssl_verify($data, base64_decode($sign), $publicKeyId, OPENSSL_ALGO_SHA1);
+    }
+
+    /**
      * @return bool|string
      */
     private function getPassword()
