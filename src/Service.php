@@ -80,14 +80,11 @@ class Service
             $this->npayPassword
         );
 
-        $response = $this->client->request('POST', $this->getApiUrl() . "/payments", [
+        return $this->client->request('POST', $this->getApiUrl() . "/payments", [
             'http_errors' => false,
             'verify' => false,
             'form_params' => $params
         ]);
-
-        var_dump($response);
-        exit;
     }
 
 }
