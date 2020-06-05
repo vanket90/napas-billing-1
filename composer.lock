@@ -4,8 +4,70 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e75ea493fab9c318d0d3620dda124e9c",
+    "content-hash": "a0da1a40cbfbf7055314bd4b41a83978",
     "packages": [
+        {
+            "name": "dflydev/dot-access-data",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dflydev/dflydev-dot-access-data.git",
+                "reference": "70a44e8a46c7943118cbbf741ef3411d84e38c81"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dflydev/dflydev-dot-access-data/zipball/70a44e8a46c7943118cbbf741ef3411d84e38c81",
+                "reference": "70a44e8a46c7943118cbbf741ef3411d84e38c81",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dflydev\\DotAccessData\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dragonfly Development Inc.",
+                    "email": "info@dflydev.com",
+                    "homepage": "http://dflydev.com"
+                },
+                {
+                    "name": "Beau Simensen",
+                    "email": "beau@dflydev.com",
+                    "homepage": "http://beausimensen.com"
+                },
+                {
+                    "name": "Carlos Frutos",
+                    "email": "carlos@kiwing.it",
+                    "homepage": "https://github.com/cfrutos"
+                }
+            ],
+            "description": "Given a deep data structure, access data by dot notation.",
+            "homepage": "https://github.com/dflydev/dflydev-dot-access-data",
+            "keywords": [
+                "access",
+                "data",
+                "dot",
+                "notation"
+            ],
+            "time": "2017-12-21T14:08:21+00:00"
+        },
         {
             "name": "guzzlehttp/guzzle",
             "version": "6.5.4",
@@ -194,6 +256,54 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
+        },
+        {
+            "name": "onesite/core",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/1sitevn/core.git",
+                "reference": "3bd2ef705069a4840037fbabf12140cccea72245"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/1sitevn/core/zipball/3bd2ef705069a4840037fbabf12140cccea72245",
+                "reference": "3bd2ef705069a4840037fbabf12140cccea72245",
+                "shasum": ""
+            },
+            "require": {
+                "dflydev/dot-access-data": "^2.0",
+                "guzzlehttp/guzzle": "^6.5",
+                "php": "^7.1",
+                "phpseclib/phpseclib": "^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OneSite\\Core\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "1Site.vn",
+                    "email": "hotro@1site.vn",
+                    "role": "Developer"
+                }
+            ],
+            "description": "1Site Core",
+            "time": "2020-06-05T06:53:34+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
