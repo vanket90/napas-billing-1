@@ -26,5 +26,5 @@ interface NapasBillingInterface
      * @param $paymentId
      * @return mixed
      */
-    public function paymentInfo($paymentId);
+    public function getPaymentInfo($paymentId);
 }

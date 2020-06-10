@@ -53,15 +53,6 @@ class NapasBillingService implements NapasBillingInterface
     private $currencyCode = '704';
 
     /**
-     * @var
-     */
-    private $transDate;
-    /**
-     * @var
-     */
-    private $trace;
-
-    /**
      * @var string
      */
     private $agentID = '905029';
@@ -252,22 +243,87 @@ class NapasBillingService implements NapasBillingInterface
         ];
     }
 
+
     /**
      * @param $params
-     * @return mixed|void
+     * @return array|mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function payment($params)
     {
-        // TODO: Implement payment() method.
+        $amount = !empty($params['amount']) ? $params['amount'] : 0;
+        $serviceCode = !empty($params['service_code']) ? $params['service_code'] : '';
+        $paymentId = !empty($params['payment_id']) ? $params['payment_id'] : '';
+
+        $params = [
+            'mti' => '0200',
+            'processingCode' => '060000',
+            'amount' => $this->getAmount($amount),
+            'transDate' => $this->getTransDate(),
+            'trace' => $this->getTrace(),
+            'channel' => $this->getChannel(),
+            'agentID' => $this->getAgentID(),
+            'currencyCode' => $this->getCurrencyCode(),
+            'serviceCode' => $serviceCode,
+            'paymentID' => $paymentId,
+        ];
+
+        $params['signature'] = $this->getSignature($params);
+
+        $client = new Client();
+        $response = $client->request('POST', "https://vasagency-sandbox.napas.com.vn:47666/agentService/payments/", [
+            'http_errors' => false,
+            'verify' => false,
+            'headers' => $this->getHeaders(),
+            'body' => json_encode($params)
+        ]);
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode != 200) {
+            return [
+                'error' => [
+                    'message' => 'Có lỗi xảy ra. Vui lòng thử lại.',
+                    'status_code' => $statusCode
+                ]
+            ];
+        }
+
+        return [
+            'data' => json_encode($response->getBody()->getContents())
+        ];
     }
 
     /**
      * @param $paymentId
-     * @return mixed|void
+     * @return array|mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function paymentInfo($paymentId)
+    public function getPaymentInfo($paymentId)
     {
-        // TODO: Implement paymentInfo() method.
+        $params = [];
+
+        $client = new Client();
+        $response = $client->request('GET', "https://vasagency-sandbox.napas.com.vn:47666/agentService/payments/" . $paymentId, [
+            'http_errors' => false,
+            'verify' => false,
+            'headers' => $this->getHeaders(),
+            'query' => json_encode($params)
+        ]);
+
+        $statusCode = $response->getStatusCode();
+        if ($statusCode != 200) {
+            return [
+                'error' => [
+                    'message' => 'Có lỗi xảy ra. Vui lòng thử lại.',
+                    'status_code' => $statusCode
+                ]
+            ];
+        }
+
+        return [
+            'data' => json_encode($response->getBody()->getContents())
+        ];
     }
 
     /**
