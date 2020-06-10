@@ -46,7 +46,7 @@ class NapasBillingServiceTest extends TestCase
         $data = $this->service->getInfo([
             'amount' => 20000,
             'service_code' => 'VJABILLING',
-            'payment_id' => '53983008',
+            'payment_id' => '53565701',
         ]);
 
         echo "\n" . json_encode($data);
@@ -62,7 +62,7 @@ class NapasBillingServiceTest extends TestCase
         $data = $this->service->payment([
             'amount' => 20000,
             'service_code' => 'VJABILLING',
-            'payment_id' => '53983008',
+            'payment_id' => '53565701',
         ]);
 
         echo "\n" . json_encode($data);
