@@ -237,10 +237,19 @@ class NapasBillingService implements NapasBillingInterface
         ]);
 
         $statusCode = $response->getStatusCode();
-        $responseData = $response->getBody()->getContents();
 
-        var_dump($statusCode, $responseData);
-        exit;
+        if ($statusCode != 200) {
+            return [
+                'error' => [
+                    'message' => 'Có lỗi xảy ra. Vui lòng thử lại.',
+                    'status_code' => $statusCode
+                ]
+            ];
+        }
+
+        return [
+            'data' => json_encode($response->getBody()->getContents())
+        ];
     }
 
     /**
