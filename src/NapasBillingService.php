@@ -290,6 +290,8 @@ class NapasBillingService implements NapasBillingInterface
             ];
         }
 
+        return $response->getBody()->getContents();
+
         return [
             'data' => json_encode($response->getBody()->getContents()),
             'request' => $params
