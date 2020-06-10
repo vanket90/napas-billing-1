@@ -65,7 +65,7 @@ class NapasBillingServiceTest extends TestCase
             'payment_id' => '53959831',
         ]);
 
-        //echo "\n" . json_encode($data);
+        echo "\n" . json_encode($data);
 
         return $this->assertTrue(true);
     }
@@ -73,7 +73,7 @@ class NapasBillingServiceTest extends TestCase
     /**
      *
      */
-    public function testPaymentInfo()
+    public function testGetPaymentInfo()
     {
         $data = $this->service->getPaymentInfo('3133524');
 
