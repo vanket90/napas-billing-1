@@ -234,7 +234,8 @@ class NapasBillingService implements NapasBillingInterface
                 'error' => [
                     'message' => 'Có lỗi xảy ra. Vui lòng thử lại.',
                     'status_code' => $statusCode
-                ]
+                ],
+                'request' => $params
             ];
         }
 
@@ -290,7 +291,8 @@ class NapasBillingService implements NapasBillingInterface
         }
 
         return [
-            'data' => json_encode($response->getBody()->getContents())
+            'data' => json_encode($response->getBody()->getContents()),
+            'request' => $params
         ];
     }
 
@@ -322,7 +324,8 @@ class NapasBillingService implements NapasBillingInterface
         }
 
         return [
-            'data' => json_encode($response->getBody()->getContents())
+            'data' => json_encode($response->getBody()->getContents()),
+            'request' => $params
         ];
     }
 
