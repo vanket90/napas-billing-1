@@ -60,7 +60,7 @@ class NapasBillingServiceTest extends TestCase
     public function testPayment()
     {
         $data = $this->service->payment([
-            'amount' => 20000,
+            'amount' => 50000000,
             'service_code' => 'VJABILLING',
             'payment_id' => '53959831',
         ]);
