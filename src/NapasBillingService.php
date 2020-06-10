@@ -66,6 +66,7 @@ class NapasBillingService implements NapasBillingInterface
 
         $this->apiUrl = config('napas.billing.api_url');
         $this->userId = config('napas.billing.user_id');
+        $this->agentID = config('napas.billing.agent_id');
         $this->userPassword = config('napas.billing.user_password');
         $this->npayPrivateKey = config('napas.billing.9pay_private_key');
         $this->npayPublicKey = config('napas.billing.9pay_public_key');
@@ -219,8 +220,7 @@ class NapasBillingService implements NapasBillingInterface
 
         $params['signature'] = $this->getSignature($params);
 
-        $client = new Client();
-        $response = $client->request('POST', "https://vasagency-sandbox.napas.com.vn:47666/agentService/payments/", [
+        $response = $this->getClient()->request('POST', $this->getApiUrl() . "/payments/", [
             'http_errors' => false,
             'verify' => false,
             'headers' => $this->getHeaders(),
@@ -271,8 +271,7 @@ class NapasBillingService implements NapasBillingInterface
 
         $params['signature'] = $this->getSignature($params);
 
-        $client = new Client();
-        $response = $client->request('POST', "https://vasagency-sandbox.napas.com.vn:47666/agentService/payments/", [
+        $response = $this->getClient()->request('POST', $this->getApiUrl() . "/payments/", [
             'http_errors' => false,
             'verify' => false,
             'headers' => $this->getHeaders(),
@@ -305,8 +304,7 @@ class NapasBillingService implements NapasBillingInterface
     {
         $params = [];
 
-        $client = new Client();
-        $response = $client->request('GET', "https://vasagency-sandbox.napas.com.vn:47666/agentService/payments/" . $paymentId, [
+        $response = $this->getClient()->request('GET', $this->getApiUrl() . "/payments/" . $paymentId, [
             'http_errors' => false,
             'verify' => false,
             'headers' => $this->getHeaders(),
@@ -348,7 +346,7 @@ class NapasBillingService implements NapasBillingInterface
     {
         $data = implode('', $params);
 
-        $privateKey = file_get_contents(storage_path('credentials/9pay_napas_billing_private.key'));
+        $privateKey = file_get_contents($this->getNpayPrivateKey());
 
         $privateKeyId = openssl_pkey_get_private($privateKey);
 
