@@ -235,12 +235,19 @@ class NapasBillingService implements NapasBillingInterface
                     'message' => 'Có lỗi xảy ra. Vui lòng thử lại.',
                     'status_code' => $statusCode
                 ],
-                'request' => $params
+                'meta_data' => [
+                    'params' => $params,
+                    'headers' => $this->getHeaders()
+                ]
             ];
         }
 
         return [
-            'data' => json_encode($response->getBody()->getContents())
+            'data' => json_encode($response->getBody()->getContents()),
+            'meta_data' => [
+                'params' => $params,
+                'headers' => $this->getHeaders()
+            ]
         ];
     }
 
@@ -285,13 +292,20 @@ class NapasBillingService implements NapasBillingInterface
                 'error' => [
                     'message' => 'Có lỗi xảy ra. Vui lòng thử lại.',
                     'status_code' => $statusCode
+                ],
+                'meta_data' => [
+                    'params' => $params,
+                    'headers' => $this->getHeaders()
                 ]
             ];
         }
 
         return [
             'data' => json_encode($response->getBody()->getContents()),
-            'request' => $params
+            'meta_data' => [
+                'params' => $params,
+                'headers' => $this->getHeaders()
+            ]
         ];
     }
 
@@ -317,13 +331,20 @@ class NapasBillingService implements NapasBillingInterface
                 'error' => [
                     'message' => 'Có lỗi xảy ra. Vui lòng thử lại.',
                     'status_code' => $statusCode
+                ],
+                'meta_data' => [
+                    'params' => $params,
+                    'headers' => $this->getHeaders()
                 ]
             ];
         }
 
         return [
             'data' => json_encode($response->getBody()->getContents()),
-            'request' => $params
+            'meta_data' => [
+                'params' => $params,
+                'headers' => $this->getHeaders()
+            ]
         ];
     }
 
